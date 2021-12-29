@@ -1,0 +1,99 @@
+.top_header_bar {
+    border-bottom: 1px solid #E8EAF3;
+    padding: 20px 40px;
+    background-color: #fff;
+}
+
+.dashboard_top_block {
+    border: solid 1px #BFC6CF;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.status_block.text-danger .fal {
+    transform: rotate(180deg);
+}
+
+[type="radio"]:checked, [type="radio"]:not(:checked) {
+    position: absolute;
+    z-index: 99;
+    height: 18px;
+    width: 18px;
+    opacity: 0;
+}
+
+[type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #1C1D1D !important;
+    font-size: 18px;
+}
+
+[type="radio"]:checked+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #0a7197;
+    border-radius: 100%;
+    background: #fff;
+}
+
+[type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #BFC6CF;
+    border-radius: 100%;
+    background: #fff;
+}
+
+[type="radio"]:not(:checked)+label.optradio2:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #E57366;
+    border-radius: 100%;
+    background: #fff;
+}
+
+[type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #0a7197;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
