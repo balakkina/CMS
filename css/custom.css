@@ -1,3 +1,10 @@
+.bg-login {
+    background: url(../img/bg_login.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .top_header_bar {
     border-bottom: 1px solid #E8EAF3;
     padding: 20px 40px;
@@ -96,4 +103,19 @@
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
+}
+
+.password-eye:before {
+    font-family: "Font Awesome 5 Pro";
+    content: "\f06e";
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    vertical-align: middle;
+    line-height: 1.2;
+    font-size: 16px;
+}
+
+.show-password .password-eye:before {
+    content: "\f070";
 }

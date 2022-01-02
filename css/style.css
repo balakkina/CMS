@@ -2197,7 +2197,7 @@ textarea.parsley-success:focus {
 
 .logged-name {
   display: inline-block;
-  font-size: 13px;
+  font-size: 1rem;
   margin-right: 5px;
 }
 
@@ -2241,6 +2241,7 @@ textarea.parsley-success:focus {
 
 .user-profile-nav a:hover, .user-profile-nav a:focus {
   background-color: #dee2e6;
+  text-decoration: none
 }
 
 .user-profile-nav .icon {
@@ -2325,12 +2326,11 @@ textarea.parsley-success:focus {
   bottom: 0;
   z-index: 100;
   width: 230px;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
   background: transparent linear-gradient(164deg, #1d5049 0%, #14569d 31%, #1d5049 100%) 0% 0% no-repeat padding-box;
   background: url(../img/bg-pattern.png) #087096;
   /* background-color: #1D2939; */
-  /* padding-left: 10px;
-  padding-right: 10px; */
-  padding: 0;
   transition: all 0.2s ease-in-out;
 }
 
