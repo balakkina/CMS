@@ -1,0 +1,137 @@
+<!-- Ministry news assets -->
+<link rel="stylesheet" href="/o/mrmwr-default-theme/css/custom/portal-styles.css" />
+<link rel="stylesheet" href="/o/mrmwr-default-theme/css/custom/ts.css" />
+<!--Ministry news assets -->
+
+<!--start photo gallery assets -->
+<link rel="stylesheet" href="/o/mrmwr-default-theme/css/custom/photogallery/blueimp-gallery.min.css" />
+<link rel="stylesheet" href="/o/mrmwr-default-theme/css/custom/photogallery/bootstrap-image-gallery.css" />
+<style>
+    .list-group-item .fa,
+    .list-group-item .fal,
+    tr td a .fad {
+        color: rgb(40, 113, 149);
+    }
+</style>
+<!--End photo gallery assets -->
+<#setting locale=localeUtil.getDefault()>
+    <!--Main content-->
+    <!-- Balaram LAYOUT -->
+    <div class="container main-content-top-margin" role="main">
+        <!-- Layout cntainer -->
+        <!--Main content-->
+        <div class="row ">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="panel panel-default panel-dm-theme">
+                    <div class="panel-head-services d-flex align-items-center justify-content-between">
+                        <div class="panel-title mt-0 d-flex align-items-center">
+                            <i class="fal fa-image fa-2x fa-fw" aria-hidden="true" alt="Electronic Library"></i>&nbsp;
+                            <@liferay.language key="el" />
+                        </div>
+                        <div>
+                            <ul class="pull-right d-flex mb-0" style="list-style: none;">
+                                <li><a href="#" onclick="getHelpInfo('photo-gallery-help','1')" class="helprint">
+                                        <i class="fal fa-question-circle" aria-hidden="true"></i>
+                                        <@liferay.language key="help" />&nbsp;
+                                    </a>
+                                </li>
+                                <li><a href="#" class="helprint" id="btn1">
+                                        <i class="fal fa-print" aria-hidden="true"></i>
+                                        <@liferay.language key="print" /> &nbsp;
+                                    </a> </li>
+                                <li><a href="/web/mrmwr1/home" class="helprint">
+                                        <i class="fal fa-chevron-left" aria-hidden="true"></i>
+                                        <@liferay.language key="back" /> &nbsp;
+                                    </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Main content-->
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 zero-padding">
+                <div class="margin-10">
+                    <div class="row bold panel-new theme-dark-red-bg mb-0">
+                        <h3 class="pull-left">${title.getData()}</h3>
+                    </div>
+                    <div class="row">
+                        <ul class="list-group" style="list-style-type: none;">
+                            <#if navigationName.getSiblings()?has_content>
+                                <#list navigationName.getSiblings() as cur_navigationName>
+
+                                    <#if cur_navigationName.isSelected.getData()=="true">
+                                        <li class="list-group-item active">
+                                            <#else>
+                                        <li class="list-group-item">
+                                    </#if>
+
+                                    <a href="${cur_navigationName.linkToPage.getData()}">
+
+                                        <#if cur_navigationName.indexNo.getData()=="1">
+                                            <i class="fal fa-print fa-fw fa-lg" aria-hidden="true"></i>
+                                        </#if>
+                                        <#if cur_navigationName.indexNo.getData()=="2">
+                                            <i class="fal fa-camera-movie fa-fw fa-lg" aria-hidden="true"></i>
+                                        </#if>
+                                        <#if cur_navigationName.indexNo.getData()=="3">
+                                            <i class="fal fa-music fa-fw fa-lg" aria-hidden="true"></i>
+                                        </#if>
+                                        <#if cur_navigationName.indexNo.getData()=="4">
+                                            <i class="fal fa-image fa-fw fa-lg" aria-hidden="true"></i>
+                                        </#if>
+                                        &nbsp;${cur_navigationName.getData()}
+                                    </a></li>
+
+                                </#list>
+                            </#if>
+                        </ul>
+                    </div> <!-- End row -->
+                </div> <!-- End margin-10 -->
+            </div> <!-- End col-xs-12 col-sm-3 col-md-3 zero-padding -->
+
+
+            <div class="col-xs-12 col-sm-9 col-md-9 zero-padding">
+                <div class="margin-10">
+                    <div class="theme-dark-red mb-3">
+                        <h3 class="bold">${title.getData()}</h3>
+                    </div>
+                    <div class="row" id="photogallery">
+                        <#if DocumentsAndMedia.getSiblings()?has_content>
+                            <div id="myGallery">
+                                <#list DocumentsAndMedia.getSiblings() as cur_DocumentsAndMedia>
+                                    <div class="col-xs-6 col-md-3">
+                                        <a href="${cur_DocumentsAndMedia.getData()}" title="" class="thumbnail"
+                                            style="min-height:0px;" data-gallery>
+                                            <img src="${cur_DocumentsAndMedia.getData()}" alt="photoimg" title=''> </a>
+                                    </div>
+                                </#list>
+                            </div>
+                        </#if>
+                    </div>
+                </div>
+            </div>
+            <div class="wpthemeClear"></div>
+        </div>
+        <!-- Balarm LAYOUT END -->
+        <!--end main content-->
+        <!-- Layout container -->
+    </div>
+    <!--end main content-->
+    <br>
+    <script>
+        YUI().use(
+            'aui-image-viewer',
+            function (Y) {
+                new Y.ImageViewer(
+                    {
+                        links: '#myGallery a',
+                        zIndex: 9,
+                        playing: false
+                    }
+                ).render();
+            }
+        );
+    </script>

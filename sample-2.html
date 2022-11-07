@@ -1,0 +1,114 @@
+<!-- Ministry news assets -->
+<link rel="stylesheet" href="/o/mrmwr-default-theme/css/custom/portal-styles.css" />
+<link rel="stylesheet" href="/o/mrmwr-default-theme/css/custom/photogallery/green-building.css" />
+<link rel="stylesheet" href="/o/mrmwr-default-theme/css/custom/ts.css" />
+<#setting locale=localeUtil.getDefault()>
+    <!--Ministry news assets -->
+    <style>
+        .list-group-item .fa,
+        .list-group-item .fal {
+            color: rgb(40, 113, 149);
+        }
+    </style>
+    <!--Main content-->
+    <div class="container main-content-top-margin" role="main">
+        <!--Main content-->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="panel panel-default panel-dm-theme">
+                    <div class="panel-head-services d-flex align-items-center justify-content-between">
+                        <div class="panel-title d-flex align-items-center"> 
+                            <i class="fab fa-fort-awesome fa-2x fa-fw"></i>&nbsp;${title.getData()}
+                        </div>
+                        <div>
+                            <ul class="pull-right d-flex mb-0" style="list-style: none">
+                                <li><a href="#" class="helprint"><i class="fal fa-question-circle" aria-hidden="true"></i>
+                                        <@liferay.language key="help" /> &nbsp;
+                                    </a> </li>
+                                <li><a class="helprint" id="btn1"><i class="fal fa-print" aria-hidden="true"></i>
+                                        <@liferay.language key="print" /> &nbsp;
+                                    </a> </li>
+                                <li><a href="index.html" class="helprint">
+                                        <i class="fal fa-chevron-left" aria-hidden="true"></i>
+                                        <@liferay.language key="back" /> &nbsp;
+                                    </a> </li>
+    
+                                <li><a id="tst" class="helprint" id="btn1">
+                                    <i class="fad fa-play-circle" aria-hidden="true"></i>
+                                        <@liferay.language key="tts" /> &nbsp;
+                                    </a> </li>
+                                <li><a id="stop" onclick="responsiveVoice.cancel();" class="helprint" id="btn1">
+                                        <i class="fad fa-stop" aria-hidden="true"></i>
+                                        <@liferay.language key="stop" /> &nbsp;
+                                    </a> </li>
+    
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Main content-->
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 zero-padding">
+                <div class="margin-10">
+                    <div class="row">
+                        <div class="bold panel-new theme-dark-red-bg mb-0">
+                            <h4 class="pull-left" title="${title.getData()}">${title.getData()}</h4>
+                        </div>
+                    </div> <!-- /.row -->
+                    <div class="row">
+                        <ul class="list-group" style="list-style-type: none;">
+                            <#if navigationName.getSiblings()?has_content>
+                                <#list navigationName.getSiblings() as cur_navigationName>
+
+                                    <#if cur_navigationName.isSelected.getData()=="true">
+                                        <li class="list-group-item active">
+                                    <#else>
+                                        <li class="list-group-item">
+                                    </#if>
+
+                                    <a href="${cur_navigationName.linkToPage.getData()}">
+                                        <#if cur_navigationName.indexNo.getData()=="1">
+                                            <i class="fab fa-fort-awesome fa-fw fa-lg" aria-hidden="true"></i></#if>
+                                        <#if cur_navigationName.indexNo.getData()=="2">
+                                            <i class="fal fa-newspaper fa-fw fa-lg" aria-hidden="true"></i></#if>
+                                        &nbsp;${cur_navigationName.getData()}
+                                    </a></li>
+
+                                </#list>
+                            </#if>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-9 zero-padding" id="speechTxt">
+                <div class="margin-10">
+                    <div class="global-content portal-content" id="main">
+                        ${content.getData()}
+
+                    </div>
+                </div>
+                <div class="wpthemeClear"></div>
+            </div>
+        </div>
+    </div>
+    <!--end main content-->
+    <br>
+    <script>
+
+        $(document).ready(function () {
+            jQuery('#tst').click(function () {
+                var lang = '${locale}';
+                var langVoice = 'US English Female';
+                if (lang == 'ar_SA') {
+                    langVoice = 'Arabic Female';
+                }
+
+                var speech = $('#speechTxt').text();
+                responsiveVoice.speak(speech, langVoice)
+
+            });
+        });
+    </script>
